@@ -1,0 +1,42 @@
+body {
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+}
+
+span {
+  color: red;
+  font-size: 8px;
+}
+#divForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 500px;
+  height: 200px;
+  justify-content: space-evenly;
+}
+
+#gridContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.row {
+  display:inline-block;
+  width:10px
+}
+
+.column {
+  border: black .25px solid;
+  display:block;
+  width: 10px;
+  height: 10px;
+}
+
+.row .clicked {
+  background-color: blue;
+}

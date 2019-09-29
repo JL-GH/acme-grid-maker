@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form>
+    <div id='divForm'>
+      <h1>Acme Grid Maker</h1>
+      <input type="text" id="yAxis" oninput="disableButton()">
+      <span id="yError"></span>
+      <input type="text" id="xAxis" oninput="disableButton()">
+      <span id="xError"></span>
+      <button type="button" onclick="makeGrid()" id="myButton">Make Grid</button>
+    </div>
+  </form>
+
+  <div id="gridContainer"></div>
+  <!-- <div id='grid'></div> -->
+  <div id="result"></div>
+</body>
+<script>
+
+  const disableButton = () => {
+    let inputX = Number(document.getElementById("xAxis").value)
+    let inputY = Number(document.getElementById("yAxis").value)
+    let buttonActive = document.getElementById('myButton')
+
+    //row validation
+    if ((inputY > 50) ||  (isNaN(inputY) === true)) {
+      buttonActive.disabled = true
+      document.getElementById("yError").innerHTML = "rows must be between 1 and 50"
+    }
+    else if (inputY <= 50) {
+      document.getElementById("yError").innerHTML = ""
+    }
+
+    //column validation
+    if ((inputX > 50) || (isNaN(inputX) === true)) {
+      buttonActive.disabled = true
+      document.getElementById("xError").innerHTML = "columns must be between 1 and 50"
+    }
+    else if (inputX <= 50) {
+      document.getElementById("xError").innerHTML = ""
+    }
+
+    //only if both are valid then button can be clicked
+    if (buttonActive.disabled === true && (inputX <= 50 && inputY <= 50)) {
+      buttonActive.disabled = false
+      document.getElementById("xError").innerHTML = ""
+      document.getElementById("yError").innerHTML = ""
+    }
+
+  }
+
+  const makeGrid = () => {
+    const x = document.querySelector("#xAxis").value
+    const y = document.querySelector("#yAxis").value
+    const gridContainer = document.querySelector("#gridContainer")
+    const grid = document.querySelector(".grid")
+    //this works too
+    // const x = document.getElementById("xAxis").value
+    // const y = document.getElementById("yAxis").value
+
+    //remove existing grid
+    if (grid) {
+      gridContainer.removeChild(grid)
+    }
+
+    //create the grid
+    let addGridToContainer = document.createElement("div")
+    addGridToContainer.classList.add("grid")
+    gridContainer.appendChild(addGridToContainer)
+
+    for (let i = 1; i <= x; i++) {
+      let row = document.createElement("div")
+      row.classList.add("row")
+        for (let j = 1; j <= y; j++) {
+          let column = document.createElement("div")
+          column.classList.add("column")
+          row.appendChild(column)
+
+          column.addEventListener('click', () => {
+            column.classList.add("clicked")
+            document.querySelector("#result").innerHTML = `rIdx: ${j} cIdx: ${i}`
+          })
+        }
+      document.querySelector(".grid").appendChild(row)
+    }
+  }
+</script>
+
+</html>
