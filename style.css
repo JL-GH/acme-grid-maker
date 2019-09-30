@@ -17,18 +17,16 @@ span {
   color: red;
   font-size: 8px;
 }
+
 #divForm {
   display: flex;
   flex-direction: column;
-  text-align: center;
   width: 185px;
   height: 150px;
   justify-content: space-evenly;
 }
 
 #gridContainer {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
 }
 
@@ -43,11 +41,11 @@ span {
 
 .column {
   border: black .25px solid;
-  display:block;
   width: 10px;
   height: 10px;
 }
 
 .row .clicked {
-  background-color: blue;
+  background-color: dodgerblue;
 }
+

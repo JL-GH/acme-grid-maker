@@ -20,9 +20,9 @@
 <script>
 
   const disableButton = () => {
-    let inputX = Number(document.getElementById("xAxis").value)
-    let inputY = Number(document.getElementById("yAxis").value)
-    let buttonActive = document.getElementById('myButton')
+    const inputX = Number(document.getElementById("xAxis").value)
+    const inputY = Number(document.getElementById("yAxis").value)
+    const buttonActive = document.getElementById('myButton')
 
     //row validation
     if ((inputY > 50) ||  (isNaN(inputY) === true)) {
@@ -56,13 +56,15 @@
     const y = document.querySelector("#yAxis").value
     const gridContainer = document.querySelector("#gridContainer")
     const grid = document.querySelector(".grid")
+    const result = document.querySelector("#result")
     //this works too
     // const x = document.getElementById("xAxis").value
     // const y = document.getElementById("yAxis").value
 
-    //remove existing grid
+    //remove existing grid and clear clicked results
     if (grid) {
       gridContainer.removeChild(grid)
+      result.innerHTML = ""
     }
 
     //create the grid
